@@ -7,7 +7,7 @@ const {
 } = require("../utilities/helpers");
 
 const app = express();
-
+// app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 const PORT = process.env.PORT || 3006;
 
@@ -26,6 +26,7 @@ app.post("/", async (req, res, next) => {
       const page = await fetchPage(req.body.website);
       const webData = page && parsePage(page, req.body.website);
       console.log(webData);
+      return res.json(webData && webData);
     }
   } catch (err) {
     console.log(err);
