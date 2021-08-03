@@ -34,7 +34,14 @@ const parsePage = (body, reqUrl) => {
 
   const imageDetails = getImageDetails($);
   const linksDetails = getLinksDetails($, reqUrl);
-  return { doctypeVersion, title, headingsDetails, imageDetails, linksDetails };
+  return {
+    doctypeVersion,
+    title,
+    headingsDetails,
+    imageDetails,
+    linksDetails,
+    loadingTimeInMs: body.loadingTime,
+  };
 };
 
 const getDoctypeVersion = (document) => {

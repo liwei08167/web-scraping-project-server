@@ -7,15 +7,12 @@ const {
 } = require("../utilities/helpers");
 
 const app = express();
-// app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+// app.use(express.urlencoded({ extended: true }));
 const PORT = process.env.PORT || 3006;
 
 app.get("/", (req, res, next) => {
-  //   res.send({ message: "Hello FROM NODEJS!" });
-  res.send(
-    '<form action="/" method="POST"><input type="text" name="website"><button type="submit">search</button></form>'
-  );
+  res.send({ message: "Hello FROM NODEJS PIGGIES!" });
 });
 
 app.post("/", async (req, res, next) => {
@@ -26,7 +23,7 @@ app.post("/", async (req, res, next) => {
       const page = await fetchPage(req.body.website);
       const webData = page && parsePage(page, req.body.website);
       console.log(webData);
-      // return res.json(webData && webData);
+      return res.json(webData && webData);
     }
   } catch (err) {
     console.log(err);
