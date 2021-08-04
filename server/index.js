@@ -28,7 +28,7 @@ app.post("/", async (req, res, next) => {
   } catch (err) {
     console.log(err);
     if (err.code === "ENOTFOUND") {
-      res.status(400).send("Error: Not Found.");
+      res.status(400).send("Error: Website Not Found.");
     } else {
       res.status(500).send("Error: Internal Server Error.");
     }
