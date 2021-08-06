@@ -22,7 +22,7 @@ app.post("/", async (req, res, next) => {
     if (isvalidUrl) {
       const page = await fetchPage(req.body.website);
       const webData = page && parsePage(page, req.body.website);
-      console.log(webData);
+      // console.log(webData);
       return res.json(webData && webData);
     }
   } catch (err) {

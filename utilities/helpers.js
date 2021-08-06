@@ -64,14 +64,25 @@ const getHeadingsDetails = ($) => {
   //headings and levels
   let headingsDetailsArr = [];
 
-  for (let i = 1; i <= 6; i++) {
-    $(`h${i}`).each(function (index, e) {
+  // for (let i = 1; i <= 6; i++) {
+  //   $(`h${i}`).each(function (index, e) {
+  //     headingsDetailsArr.push({
+  //       headings: e.name,
+  //       level: $(this).parents().length,
+  //     });
+  //   });
+  // }
+  const headings = Array.from({ length: 6 }, (v, i) => `h${i + 1}`);
+
+  headings.map((el) => {
+    $(el).each((index, h) => {
+      // console.log($(e).parents().length);
       headingsDetailsArr.push({
-        headings: e.name,
-        level: $(this).parents().length,
+        headings: h.name,
+        level: $(h).parents().length,
       });
     });
-  }
+  });
 
   return headingsDetailsArr;
 };
